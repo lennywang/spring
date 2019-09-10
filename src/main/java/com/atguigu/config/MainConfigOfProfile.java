@@ -11,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.StringValueResolver;
 
 import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
 
 @PropertySource("classpath:/db.properties")
 @Configuration
@@ -31,35 +32,33 @@ public class MainConfigOfProfile implements EmbeddedValueResolverAware {
 
     @Profile("dev")
     @Bean("devDataSource")
-    public DataSource dataSourceDev(@Value("${db.password}")String pwd)
-    {
+    public DataSource dataSourceDev(@Value("${db.password}")String pwd) throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pwd);
-        dataSource.setJdbcUrl("jdbc:msql://localhost:3306/dev");
+        dataSource.setJdbcUrl("jdbc:msql://39.107.79.33:3306/xdclass-mysql");
         dataSource.setDriverClass(driverClass);
         return dataSource;
     }
 
     @Profile("test")
     @Bean("testDataSource")
-    public DataSource dataSourceDev(@Value("${db.password}")String pwd)
-    {
+    public DataSource dataSourceTest(@Value("${db.password}")String pwd) throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pwd);
-        dataSource.setJdbcUrl("jdbc:msql://localhost:3306/test");
+        dataSource.setJdbcUrl("jdbc:msql://39.107.79.33:3306/xdclass-redis");
         dataSource.setDriverClass(driverClass);
         return dataSource;
     }
 
     @Profile("prod")
     @Bean("prodDataSource")
-    public DataSource dataSourceDev(@Value("${db.password}")String pwd) {
+    public DataSource dataSourceProd(@Value("${db.password}")String pwd) throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(user);
         dataSource.setPassword(pwd);
-        dataSource.setJdbcUrl("jdbc:msql://localhost:3306/prod");
+        dataSource.setJdbcUrl("jdbc:msql://39.107.79.33:3306/xdclass-concurrency-our");
         dataSource.setDriverClass(driverClass);
         return dataSource;
     }

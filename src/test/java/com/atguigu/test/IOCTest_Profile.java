@@ -17,7 +17,7 @@ public class IOCTest_Profile {
         applicationContext.register(MainConfigOfProfile.class);
         applicationContext.refresh();
 
-        String[] beanNamesForType = applicationContext.getBeanNamesForType(DataSource.class);
+        String[] beanNamesForType = applicationContext.getBeanNamesForType(DataSource.class);//
         for (String string:beanNamesForType
              ) {
             System.out.println(string);
