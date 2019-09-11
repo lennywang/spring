@@ -8,7 +8,6 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.m2/repository/junit/junit/4.12/junit-4.12-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.m2/repository/junit/junit/4.12/junit-4.12.jar!/" />
     </SOURCES>
   </library>
 </component>
